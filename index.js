@@ -23,7 +23,6 @@ jsfile.forEach((f, i) =>{
 
 });
 
-
 bot.on("ready", () => {
   console.log(bot.user.username + " is online.")
 });
@@ -37,11 +36,9 @@ bot.on("message", async message => {
   let args = content.slice(1);
   let prefix = config.prefix;
 
-
   //checks if message contains a command and runs it
   let commandfile = bot.commands.get(command.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args);
-})
-
+});
 
 bot.login(config.token)
