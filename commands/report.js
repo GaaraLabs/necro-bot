@@ -1,34 +1,25 @@
-const Discord = require("discord.js");
-const botconfig = require("../config.json");
-const red = botconfig.red;
-const green = botconfig.green;
-const orange = botconfig.orange;
-const errors = require("../utils/errors.js");
+const Discord = module.require("discord.js");
 
-module.exports.run = async (bot, message, args) => {
-    message.delete();
-    if(args[0] == "help"){
-      message.reply("Usage: !report <user> <reason>");
-      return;
-    }
-    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!rUser) return errors.cantfindUser(message.channel);
+module.exports.run = async (bot, message, args) =>{
+  let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!rUser) return message.channel.send("Couldn't find user.");
     let rreason = args.join(" ").slice(22);
-    if(!rreason) return errors.noReason(message.channel);
 
     let reportEmbed = new Discord.RichEmbed()
     .setDescription("Reports")
-    .setColor(orange)
-    .addField("Reported User", `${rUser} with ID: ${rUser.id}`)
-    .addField("Reported By", `${message.author} with ID: ${message.author.id}`)
+    .setColor("#15f153")
+    .addField("Reported User", `${rUser}`)
+    .addField("Reported By", `${message.author}`)
     .addField("Channel", message.channel)
     .addField("Time", message.createdAt)
     .addField("Reason", rreason);
 
     let reportschannel = message.guild.channels.find(`name`, "reports");
     if(!reportschannel) return message.channel.send("Couldn't find reports channel.");
-    reportschannel.send(reportEmbed);
 
+
+    message.delete().catch(O_o=>{});
+    reportschannel.send(reportEmbed);
 }
 
 module.exports.help = {
