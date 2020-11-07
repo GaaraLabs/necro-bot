@@ -1,7 +1,7 @@
 const fs = require('fs');
 const http = require('http');
 
-const db = require('./Pokemons.json')
+const db = require('./Pokemons.json');
 const imghash = require('imghash');
 const Jimp = require('jimp');
 const request = require('request').defaults({ encoding: null });
