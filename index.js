@@ -94,7 +94,7 @@ client.on("message", message => {
       );
     }
 
-    if (message.author.id == "365975655608745985") {
+    if (message.author.id == "705016654341472327") {
       message.embeds.forEach(e => {
         if (
           e.description !== undefined &&
