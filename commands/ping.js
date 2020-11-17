@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args) => {
   message.channel.send(embed).then(m => {
   	embed
      	.setTitle("Pong!")
-  		.setDescription("Latency is " + (m.createdTimestamp - message.createdTimestamp) + "ms. API latency is " + Math.round(client.ping) + "ms.");
+  		.setDescription("Ye le Bhosdk teri ping " + (m.createdTimestamp - message.createdTimestamp) + "ms. Meri ping dekh tere se bohot fast hu madarchod " + Math.round(client.ping) + "ms.");
 
       m.edit(embed);
   });
