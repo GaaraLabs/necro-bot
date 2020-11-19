@@ -1,3 +1,4 @@
+const { Client, Collection } = require("discord.js");
 const fs = require("fs");
 const http = require("http");
 
@@ -11,6 +12,17 @@ const client = new Discord.Client();
 
 const express = require("express");
 const app = express();
+
+//Command Handler
+client.commands = new Collection();
+client.aliases = new Collection();
+
+//Command Folder location
+client.categories = fs.readdirSync("./commands/");
+
+["command"].forEach(handler => {
+    require(`./handlers/${handler}`)(client);
+});
 
 if (Number(process.version.slice(1).split(".")[0]) < 8)
   throw new Error(
