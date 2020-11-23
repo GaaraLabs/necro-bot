@@ -6,7 +6,6 @@ module.exports.run = async (bot, message, args) => {
     let owners = process.env.OWNER.split(',');
   
   if (!owners.includes(message.author.id))  {
-    embed
       .setTitle("Permission Denied")
       .setDescription("You do not have permission to use this command. It's for owners only.");
   if(!args[0]) return message.channel.send("oof");
