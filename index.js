@@ -57,7 +57,7 @@ client.on("ready", () => {
     "Ready",
     "event"
   );
-  client.user.setActivity(`Mazduri with Micky & ${client.users.size} Others`);
+  client.user.setActivity(`With Micky`);
 });
 
 client.on("error", error => {
